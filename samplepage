@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>samplepage</title>
+    <meta charset=" utf-8"></meta>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maxium-scale=1" />
+    <style type="text/css">
+    main{/*容器設定，利用flex使所有item並排，切欄，flex-wrap可以自動換行，變成回應式頁面*/
+    display: flex;flex-wrap:wrap;justify-content:  center;align-items:flex-start}
+    main>.item{/*項目*/flex: none;width: 300px;margin: 10px;background-color:#ffefd5 }   
+    nav{display: flex;font-weight: bold;text-align:center;padding-right: 0px;}
+    nav>.logo{flex: none;width:100px;border: 1px solid;background-color;background-color: #519EA4; padding-top: 3px;}
+    nav>.menu{flex:auto;border: 1px solid;background-color: #519EA4;}
+    nav>.user{flex: none;width: 100px;border: 1px solid;background-color: #519EA4}
+    .diary{width: 1000px;margin-left: auto;margin-right: auto;}
+    .box{width: 280px;padding: 10px;margin: 10px;background-color:#ffefd5 ;display: inline-block;
+        vertical-align: top; height: 175px;}
+    .articletitle{font-size: 15px;margin-bottom:10px;color:#519EA4} 
+    .content{padding:10px; border:3px solid;font-weight: bold; font-size:12px}
+    .keywords{font-size: 14px;color: crimson;font-weight: bold}
+    .head{background-color:#C37D92;color: #ffefd5 ;font-weight: bold;font-size:40px;}
+    #btn:hover{background-color:grey;}
+    input:focus{border:2px solid grey}
+    @media (max-width:1200px){main>.item{width: 45%;}}
+    @media (max-width:500px){main>.item{width:90%;text-align: center;}} 
+    table{border-collapse:collapse;border:3px solid black }
+    td{border: 1px solid black;padding: 5px;}
+    tr:nth-child(1){font-size:20px;background-color: cadetblue;text-align: center;}
+    tr:nth-child(even){background-color: #e8e8e8;}
+    </style>
+    <!-- 回應式排滿設計@media screen滿足特定條件時，當使用手機且螢幕不超過600px時，使用特殊的css-->
+    <script>
+        function processFormData(){
+            const sampleElement = document.getElementById("n");
+            const n = sampleElement.value;
+            alert("你要的是"+n+"*"+n+"*"+n+"的立方體")
+            var Xlist=new Array();
+            var Ylist=new Array();
+            var Zlist=new Array();
+            for (var a=0;a<n;a++){
+                Xlist[a]= new Array();
+                Ylist[a]=new Array();
+                Zlist[a]=new Array();
+            }
+            
+            //console.log(Xlist);
+            //X軸
+            for (var a=1; a<=n*n*n;a++){
+                var ans = (a+n)%n;
+                if (ans==0){
+                    Xlist[n-1].push(a)
+                }
+                else{
+                    Xlist[ans-1].push(a)
+                }
+            }
+            //alert(Xlist)
+            //alert(Xlist[0])
+            for (var a=0;a<n;a++){
+                var result=(Xlist[a]);
+                var sample=a+1;
+                alert("X軸中的第"+ sample+ "管樣本有"+ result)
+            }
+            //Y軸
+            var anslist= new Array();
+            for (var a=1; a<=n;a++){
+                var list = new Array();
+                for (var b =1;b<=n*n;b++){
+                    ans=b+(n*n*(a-1));
+                    list.push(ans);
+                }
+                anslist.push(list);
+            }
+            //alert(anslist);
+            //console.log(anslist);
+            for (var a=1;a<=n;a++){
+                var alphalist= new Array();
+                for (var b=1;b<=n;b++){
+                    for (var c=1;c<=n;c++){
+                        alphalist.push(anslist[b-1][(c-1)+(n*(a-1))]);
+                        //alert(alphalist)
+                    }
+                }
+                Ylist[a-1].push(alphalist);
+            };
+            //alert(Ylist[0]);
+            //console.log(Ylist)
+            for (var x=0;x<n;x++){
+                var result=(Ylist[x]);
+                var sample=x+1;
+                alert("Y軸中的第"+ sample+ "管樣本有"+ result)
+            }
+            //Z軸
+            for (var a=1;a<=(n*n*n);a++){
+                var ans=Math.floor(a/(n*n));
+                //alert(ans)
+                if(a%(n*n)==0){
+                    Zlist[ans-1].push(a)
+                }
+                else{
+                    Zlist[ans].push(a)
+                    //alert(Zlist)
+                }
+            }
+            //console.log(Zlist)
+            for (var z=0;z<n;z++){
+                var result=(Zlist[z]);
+                var sample=z+1;
+                alert("Z軸中的第"+ sample+ "管樣本有"+ result)
+            }
+            return n
+        }
+    </script>
+    
+</head>
+<body style="margin: 0px;background-color: #fdf5e6;"> 
+    
+    <div class="head" align="center"><a>Gina Website</a> </div>
+    <nav>
+        <div class="logo"><img src="網站logo.png"  height="25px" ></img></div>
+        <div class="menu">主選單</div>
+        <div class="user">使用者</div>
+    </nav> 
+    
+    <hr/>
+    <h2 align="center"> 取的樣品管配置資料</h2>
+    <form name='form' id='form'>
+        建立立方體，請輸入n：
+        <input type='text' name='n' id='n' /> 
+        <input type='button' name='submit' value='送出' onclick='processFormData();' />
+    </form>
+</body>
+</html>
