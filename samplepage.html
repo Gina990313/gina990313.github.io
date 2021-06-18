@@ -45,15 +45,19 @@
             
             //console.log(Xlist);
             //X軸
-            for (var a=1; a<=n*n*n;a++){
-                var ans = (a+n)%n;
+            var s=n*n*n
+            for (var a=1; a<=s;a++){
+                var all= a +Number(n);
+                var ans = all%n;
+            //alert(all+"anser"+ans)
                 if (ans==0){
                     Xlist[n-1].push(a)
                 }
                 else{
                     Xlist[ans-1].push(a)
+                    //alert(Xlists)
                 }
-            }
+            }   
             //alert(Xlist)
             //alert(Xlist[0])
             for (var a=0;a<n;a++){
@@ -115,7 +119,7 @@
 </head>
 <body style="margin: 0px;background-color: #fdf5e6;"> 
     
-    <div class="head" align="center"><a>Gina Website</a> </div>
+    <div class="head" align="center"><a >Gina Website</a> </div>
     <nav>
         <div class="logo"><img src="網站logo.png"  height="25px" ></img></div>
         <div class="menu">主選單</div>
@@ -129,5 +133,7 @@
         <input type='text' name='n' id='n' /> 
         <input type='button' name='submit' value='送出' onclick='processFormData();' />
     </form>
+
+    <div><a href="https://gina990313.github.io/homepage.html">回首頁</a></div>
 </body>
 </html>
