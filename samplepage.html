@@ -57,13 +57,15 @@
                     Xlist[ans-1].push(a)
                     //alert(Xlists)
                 }
-            }   
+            }  
+            var print=new Array() 
             //alert(Xlist)
             //alert(Xlist[0])
             for (var a=0;a<n;a++){
                 var result=(Xlist[a]);
                 var sample=a+1;
-                alert("X軸中的第"+ sample+ "管樣本有"+ result)
+                //alert("X軸中的第"+ sample+ "管樣本有"+ result);
+                print.push("X軸中的第"+ sample+ "管樣本有"+ result)
             }
             //Y軸
             var anslist= new Array();
@@ -92,7 +94,8 @@
             for (var x=0;x<n;x++){
                 var result=(Ylist[x]);
                 var sample=x+1;
-                alert("Y軸中的第"+ sample+ "管樣本有"+ result)
+                //alert("Y軸中的第"+ sample+ "管樣本有"+ result);
+                print.push("Y軸中的第"+ sample+ "管樣本有"+ result)
             }
             //Z軸
             for (var a=1;a<=(n*n*n);a++){
@@ -110,9 +113,16 @@
             for (var z=0;z<n;z++){
                 var result=(Zlist[z]);
                 var sample=z+1;
-                alert("Z軸中的第"+ sample+ "管樣本有"+ result)
+                //alert("Z軸中的第"+ sample+ "管樣本有"+ result)
+                print.push("Z軸中的第"+ sample+ "管樣本有"+ result)
             }
-            return n
+            var str=''
+            for(var i=0; i<(print.length); i++){
+                var content = '<li>'+print[i]+'</li>';
+                str+=content;
+            }
+            var tableObj=document.getElementById("table")
+            tableObj.innerHTML=str
         }
     </script>
     
@@ -133,6 +143,9 @@
         <input type='text' name='n' id='n' /> 
         <input type='button' name='submit' value='送出' onclick='processFormData();' />
     </form>
+    <div id="table">
+
+    </div>
 
     <div><a href="https://gina990313.github.io/homepage.html">回首頁</a></div>
 </body>
