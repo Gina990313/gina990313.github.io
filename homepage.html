@@ -19,6 +19,14 @@
             menu_1.style.display="none";//menu式展開的話，點一下就藏起來
             }
         }
+        function appear(){
+            var menu_1=document.getElementById("menu-1");
+            menu_1.style.display="block"
+        }
+        function hide(){
+            var menu_1=document.getElementById("menu-1");
+            menu_1.style.display="none"
+        }
     </script>
     <style type="text/css"> 
     ul.drop-down-menu{margin: 0;padding: 0;list-style: none;font-size: 23px;display: flex;font-weight: bolder;background-color: #519EA4;text-align:center}
@@ -30,7 +38,7 @@
     /*讓選單本來是關起來的*/
     .menudisplay li{font-size: 15px;border-bottom: 1px solid;}
     .menudisplay li:last-child{border-bottom: none;}
-    ul.drop-down-menu li:hover>ul{display: block;}  /*，當滑鼠到選單上，display會被block，也就是說原本的隱藏會變成打開*/
+    /*ul.drop-down-menu li:hover>ul{display: block;}*/  /*，當滑鼠到選單上，display會被block，也就是說原本的隱藏會變成打開*/
     .diary{width: 1000px;margin-left: auto;margin-right: auto;}
     .box{width: 280psx;padding: 10px;margin: 10px;background-color:#ffefd5 ;display: inline-block;
         vertical-align: top; height: 175px;}
@@ -71,7 +79,7 @@
     
     <ul class="drop-down-menu" >
         <li class="logo"><a href="https://gina990313.github.io/homepage.html"><img src="網站logo.png"  height="25px" ></img></a></li>
-        <li class="menu" onclick="toggleMenu()" id="menu">主選單
+        <li class="menu" onclick="toggleMenu()"  id="menu"><span onmouseover="appear()" onmouseout="hide()">主選單</span>
             <ul class="menudisplay" id="menu-1" >
                 <li><a href="https://gina990313.github.io/homepage.html" class="href" >首頁</a></li>
                 <li><a href="https://gina990313.github.io/samplepage.html" class="href">大專生研究計畫網頁</a></li>
