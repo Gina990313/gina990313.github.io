@@ -6,6 +6,20 @@
     <!--要製作回應式網頁時，要加上meta="viewport"，希望網頁在手機上不要自己去做縮放-->
     <meta name="viewport" content="width=device-width, initial-scale=1, maxium-scale=1" />
     <!--可以放註解--><!--建立CSS的格式，才不會code很亂-->
+    <script type="text/javascript">  /*寫javascript*/
+        var username= prompt("請輸入名字: "," ");
+        alert("歡迎"+username+"來到米奇妙妙屋~")
+        function toggleMenu(){
+            var menu=document.getElementById("menu");
+            var menu_1=document.getElementById("menu-1");
+            if(menu_1.style.display=="none"){//menu是藏起來的狀態就展開
+            menu_1.style.display="block";//展開
+            }
+            else{
+            menu_1.style.display="none";//menu式展開的話，點一下就藏起來
+            }
+        }
+    </script>
     <style type="text/css"> 
     ul.drop-down-menu{margin: 0;padding: 0;list-style: none;font-size: 23px;display: flex;font-weight: bolder;background-color: #519EA4;text-align:center}
     ul.drop-down-menu li{position: relative;}
@@ -49,20 +63,7 @@
     <!--階層式選擇器
     例如把超連結改顏色，但是不同階層下的顏色要不同
     .class名 tag，使用class之後再空一格，在加tag-->
-    <script type="text/javascript">  /*寫javascript*/
-        var username= prompt("請輸入名字: "," ");
-        alert("歡迎"+username+"來到米奇妙妙屋~")
-        function toggleMenu(){
-            var menu=document.getElementById("menu");
-            var menu_1=document.getElementById("menu-1")
-            if(menu_1.style.display=="none"){//menu是藏起來的狀態就展開
-            menu_1.style.display="block";//展開
-            }
-            else{
-            menu_1.menudisplay.style.display="none";//menu式展開的話，點一下就藏起來
-            }
-        }
-    </script>
+    
 </head>
 <body style="margin: 0px;background-color: #FCF3E1;"> 
     
@@ -70,13 +71,13 @@
     
     <ul class="drop-down-menu" >
         <li class="logo"><a href="https://gina990313.github.io/homepage.html"><img src="網站logo.png"  height="25px" ></img></a></li>
-        <li class="menu" onclick="toggleMenu()"><a >主選單</a>
-            <ul class="menudisplay" id="menu" >
+        <li class="menu" onclick="toggleMenu()" id="menu">主選單
+            <ul class="menudisplay" id="menu-1" >
                 <li><a href="https://gina990313.github.io/homepage.html" class="href" >首頁</a></li>
                 <li><a href="https://gina990313.github.io/samplepage.html" class="href">大專生研究計畫網頁</a></li>
             </ul>
         </li>
-        <li class="user"><a>關於我</a></li>
+        <li class="user">關於我</li>
     </ul>
    
     <div style="text-align: center">
