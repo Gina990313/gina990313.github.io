@@ -6,17 +6,23 @@
     <!--要製作回應式網頁時，要加上meta="viewport"，希望網頁在手機上不要自己去做縮放-->
     <meta name="viewport" content="width=device-width, initial-scale=1, maxium-scale=1" />
     <!--可以放註解--><!--建立CSS的格式，才不會code很亂-->
-    <style type="text/css">
+    <style type="text/css"> 
+    ul.drop-down-menu{margin: 0;padding: 0;list-style: none;font-size: 23px;display: flex;font-weight: bolder;background-color: #519EA4;text-align:center}
+    ul.drop-down-menu li{position: relative;}
+    ul>.logo{flex: none;width:100px;border: 1px solid;; padding-top: 3px;}
+    ul>.menu{flex:auto;border: 1px solid;}
+    ul>.user{flex: none;width: 100px;border: 1px solid;}
+    .menudisplay{opacity: 0 ;transition: opacity 0.3s;border:1px solid;position: absolute;z-index: 99;left: -1px;top:100%;right:-1px;background-color:#D9B080;}
+    /*讓選單本來是關起來的*/
+    .menudisplay li{font-size: 15px;border-bottom: 1px solid;}
+    .menudisplay li:last-child{border-bottom: none;}
+    ul.drop-down-menu li:hover>ul{opacity: 1;;transition: opacity 0.3s;}  /*，當滑鼠到選單上，display會被block，也就是說原本的隱藏會變成打開*/
+    .diary{width: 1000px;margin-left: auto;margin-right: auto;}
+    .box{width: 280psx;padding: 10px;margin: 10px;background-color:#ffefd5 ;display: inline-block;
+        vertical-align: top; height: 175px;}
     main{/*容器設定，利用flex使所有item並排，切欄，flex-wrap可以自動換行，變成回應式頁面*/
     display: flex;flex-wrap:wrap;justify-content:  center;align-items:flex-start}
-    main>.item{/*項目*/flex: none;width: 300px;margin: 10px;background-color:#ffefd5 }   
-    nav{display: flex;font-weight: bold;text-align:center;padding-right: 0px;}
-    nav>.logo{flex: none;width:100px;border: 1px solid;background-color;background-color: #519EA4; padding-top: 3px;}
-    nav>.menu{flex:auto;border: 1px solid;background-color: #519EA4;}
-    nav>.user{flex: none;width: 100px;border: 1px solid;background-color: #519EA4}
-    .diary{width: 1000px;margin-left: auto;margin-right: auto;}
-    .box{width: 280px;padding: 10px;margin: 10px;background-color:#ffefd5 ;display: inline-block;
-        vertical-align: top; height: 175px;}
+    main>.item{/*項目*/flex: none;width: 300px;margin: 10px;background-color:#ffefd5 }  
     .articletitle{font-size: 15px;margin-bottom:10px;color:#519EA4} 
     .content{padding:10px; border:3px solid;font-weight: bold; font-size:12px}
     .keywords{font-size: 14px;color: crimson;font-weight: bold}
@@ -29,6 +35,9 @@
     td{border: 1px solid black;padding: 5px;}
     tr:nth-child(1){font-size:20px;background-color: cadetblue;text-align: center;}
     tr:nth-child(even){background-color: #e8e8e8;}
+    .hide{display: block;}         /*配合上面的toggleMenu，當滑鼠到選單上，display會被block，也就是說原本的隱藏會變成打開*/
+    .href{text-decoration:none;color:black}
+    a:hover{text-decoration: underline;color: #519EA4;}/*當滑鼠移到超連結上時，出現顏色和底線*/
     </style>
     <!-- 回應式排滿設計@media screen滿足特定條件時，當使用手機且螢幕不超過600px時，使用特殊的css-->
     <!--css可以新增絕對定位position:absolute，可以製作網頁活動訊息，定在右上角-->
@@ -42,18 +51,26 @@
     <script type="text/javascript">  /*寫javascript*/
         var username= prompt("請輸入名字: "," ");
         alert("歡迎"+username+"來到米奇妙妙屋~")
-        
-        
+        function toggleMenu(){
+            var menu=document.getElementById("menu");
+            menu.classList.toggle("hide");//搭配css class選擇器就可以輕鬆藏起來，切換標籤物件class的hide設定
+        }
     </script>
 </head>
-<body style="margin: 0px;background-color: #fdf5e6;"> 
+<body style="margin: 0px;background-color: #FCF3E1;"> 
     
     <div class="head" align="center"><a>Gina Website</a> </div>
-    <nav>
-        <div class="logo"><a href="https://gina990313.github.io/homepage.html"><img src="網站logo.png"  height="25px" ></img></a></div>
-        <div class="menu">主選單</div>
-        <div class="user">使用者</div>
-    </nav> 
+    
+    <ul class="drop-down-menu" >
+        <li class="logo"><a href="https://gina990313.github.io/homepage.html"><img src="網站logo.png"  height="25px" ></img></a></li>
+        <li class="menu" ><a >主選單</a>
+            <ul class="menudisplay" id="menu" >
+                <li><a href="https://gina990313.github.io/homepage.html" class="href" >首頁</a></li>
+                <li><a href="https://gina990313.github.io/samplepage.html" class="href">大專生研究計畫網頁</a></li>
+            </ul>
+        </li>
+        <li class="user"><a>關於我</a></li>
+    </ul>
    
     <div style="text-align: center">
         <img src = "IMG_8471.JPG" width="200px"></img>
@@ -64,9 +81,9 @@
     <h2 align="center"> 社群連結</h2>
     <div calss = "diary">
         <ul>
-            <li><a href = "https://www.facebook.com/tsaokohsuan">facebook</a></li>
-            <li><a href="https://www.linkedin.com/in/kohsaun-tsao-0071731ba/">LinkedIn</a></li>
-            <li><a href="https://www.instagram.com/gina890524/">Instagram</a></li>
+            <li><a href = "https://www.facebook.com/tsaokohsuan" class="href">facebook</a></li>
+            <li><a href="https://www.linkedin.com/in/kohsaun-tsao-0071731ba/" class="href">LinkedIn</a></li>
+            <li><a href="https://www.instagram.com/gina890524/" class="href">Instagram</a></li>
         </ul>
     </div>
     
@@ -96,18 +113,22 @@
     </table>
     <h2 align="center"> 大專生研究計畫樣品管配置網站</h2>
     <div style="text-align: center">
-        <a href="https://gina990313.github.io/samplepage.html"><b>點我!!</b></a>
+        <a href="https://gina990313.github.io/samplepage.html" class="href"><b>點我!!</b></a>
     </div>
-    <h2 align="center">日記</h2>   <!--任一標籤都可以加入style，並加入CSS屬性，"屬性:設定值";"屬性:設定值" -->
+
+    <h2 align="center">Diary</h2>   <!--任一標籤都可以加入style，並加入CSS屬性，"屬性:設定值";"屬性:設定值" -->
     <main>
         <div class="item">
-            <div class="articletitle"><b>實習困難重重啊!</b></div>
+            <div class="articletitle"><b>在家的生活!</b></div>
             <div class="content">
-                每天都期待收到信件，但是誰知道等到的是拒絕信<br/>
-                學了debug, HTML，過了Google 數位人才計畫，看起來很厲害<br/>
-                但我還是找不到工作<br/>
-                最近IKEA數位行銷實習生面試完了，現在靜待通知<br/>
-                等待真的很討厭啊<span class="keywords" >!!</span>
+                每天都期待收到信件、學程式、練練英文<br/>
+                學了debug, HTML，過了Google 數位人才計畫<br/>
+                但我還是好想出門看看這世界<br/>
+                想去看海，想去爬山<br/>
+                想做在店家裡<br/>
+                喝著咖啡，吃著蛋糕<br/>
+                不知道疫情之後的日子，是否會不再一樣
+                
             </div>
         </div>
         <div class="item">
@@ -121,6 +142,19 @@
                 不知道我的朋友現在胖還瘦<br/>
                 不知道下次在踏入校園是甚麼時候
             </div>
+        </div>
+        <div class="item">
+            <div class="articletitle"><b>網頁主選單的故事</b></div>
+            <div class="content">
+                這幾天一直在處理網頁主選單<br/>
+                上網看了好多教學<br/>
+                自學這些程式真的蠻累人的<br/>
+                但是看到自己用程式寫的網站<br/>
+                真的會特別的感動<br/>
+                用了display後來換成轉換透明度<br/>
+                還加上轉換動畫，現在變得還不錯嘿嘿
+            </div>
+        
         </div> 
     </main> 
     <hr/>
