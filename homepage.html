@@ -54,11 +54,12 @@
         alert("歡迎"+username+"來到米奇妙妙屋~")
         function toggleMenu(){
             var menu=document.getElementById("menu");
-            if(menu.style.display=="none"){//menu是藏起來的狀態就展開
-            menu.style.display="block";//展開
+            var menu_1=document.getElementById("menu-1")
+            if(menu_1.style.display=="none"){//menu是藏起來的狀態就展開
+            menu_1.style.display="block";//展開
             }
             else{
-            menu.style.display="none";//menu式展開的話，點一下就藏起來
+            menu_1.menudisplay.style.display="none";//menu式展開的話，點一下就藏起來
             }
         }
     </script>
