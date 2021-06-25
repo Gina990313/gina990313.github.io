@@ -12,11 +12,11 @@
     ul>.logo{flex: none;width:100px;border: 1px solid;; padding-top: 3px;}
     ul>.menu{flex:auto;border: 1px solid;}
     ul>.user{flex: none;width: 100px;border: 1px solid;}
-    .menudisplay{opacity: 0 ;transition: opacity 0.3s;border:1px solid;position: absolute;z-index: 99;left: -1px;top:100%;right:-1px;background-color:#D9B080;}
+    .menudisplay{display:none;border:1px solid;position: absolute;z-index: 99;left: -1px;top:100%;right:-1px;background-color:#D9B080;}
     /*讓選單本來是關起來的*/
     .menudisplay li{font-size: 15px;border-bottom: 1px solid;}
     .menudisplay li:last-child{border-bottom: none;}
-    ul.drop-down-menu li:hover>ul{opacity: 1;;transition: opacity 0.3s;}  /*，當滑鼠到選單上，display會被block，也就是說原本的隱藏會變成打開*/
+    ul.drop-down-menu li:hover>ul{display: block;}  /*，當滑鼠到選單上，display會被block，也就是說原本的隱藏會變成打開*/
     .diary{width: 1000px;margin-left: auto;margin-right: auto;}
     .box{width: 280psx;padding: 10px;margin: 10px;background-color:#ffefd5 ;display: inline-block;
         vertical-align: top; height: 175px;}
@@ -35,7 +35,8 @@
     td{border: 1px solid black;padding: 5px;}
     tr:nth-child(1){font-size:20px;background-color: cadetblue;text-align: center;}
     tr:nth-child(even){background-color: #e8e8e8;}
-    .hide{opacity: 1;;transition: opacity 0.3s;}         /*配合上面的toggleMenu，當滑鼠到選單上，display會被block，也就是說原本的隱藏會變成打開*/
+    .hide{display: none;}         /*配合上面的toggleMenu，當滑鼠到選單上，display會被block，也就是說原本的隱藏會變成打開*/
+    .appear{display: block;}
     .href{text-decoration:none;color:black}
     a:hover{color: #519EA4;}/*當滑鼠移到超連結上時，出現顏色和底線*/
     </style>
@@ -53,7 +54,10 @@
         alert("歡迎"+username+"來到米奇妙妙屋~")
         function toggleMenu(){
             var menu=document.getElementById("menu");
-            menu.classList.toggle("hide");//搭配css class選擇器就可以輕鬆藏起來，切換標籤物件class的hide設定
+            if (menu.style.display=="block"){
+                menu.classList.toggle("hide");//搭配css class選擇器就可以輕鬆藏起來，切換標籤物件class的hide設定
+            }
+            else if(menu.style.display=="none") {menu.classList.toggle("appear")}
         }
     </script>
 </head>
