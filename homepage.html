@@ -9,9 +9,9 @@
     <script type="text/javascript">  /*寫javascript*/
         var username= prompt("請輸入名字: "," ");
         alert("歡迎"+username+"來到米奇妙妙屋~")
-        function toggleMenu(){
+        function toggleMenu(number){ //處理主選單單擊函式
             var menu=document.getElementById("menu");
-            var menu_1=document.getElementById("menu-1");
+            var menu_1=document.getElementById("menu-"+number);
             if(menu_1.style.display=="none"){//menu是藏起來的狀態就展開
             menu_1.style.display="block";//展開
             }
@@ -19,21 +19,21 @@
             menu_1.style.display="none";//menu式展開的話，點一下就藏起來
             }
         }
-        function appear(){
-            var menu_1=document.getElementById("menu-1");
+        /*function appear(number){ //處理主選單滑鼠移入開啟
+            var menu_1=document.getElementById("menu-"+number);
             menu_1.style.display="block"
         }
-        function hide(){
-            var menu_1=document.getElementById("menu-1");
+        function hide(number){  //處理主選單滑鼠移出關閉
+            var menu_1=document.getElementById("menu-"+number);
             menu_1.style.display="none"
-        }
+        }*/
     </script>
     <style type="text/css"> 
     ul.drop-down-menu{margin: 0;padding: 0;list-style: none;font-size: 23px;display: flex;font-weight: bolder;background-color: #519EA4;text-align:center}
     ul.drop-down-menu li{position: relative;}
-    ul>.logo{flex: none;width:100px;border: 1px solid;; padding-top: 3px;}
+    ul>.logo{flex: none;width:200px;border: 1px solid;; padding-top: 3px;}
     ul>.menu{flex:auto;border: 1px solid;}
-    ul>.user{flex: none;width: 100px;border: 1px solid;}
+    ul>.user{flex: none;width: 200px;border: 1px solid;}
     .menudisplay{display:none;border:1px solid;position: absolute;z-index: 99;left: -1px;top:100%;right:-1px;background-color:#D9B080;}
     /*讓選單本來是關起來的*/
     .menudisplay li{font-size: 15px;border-bottom: 1px solid;}
@@ -78,18 +78,24 @@
     <div class="head" align="center"><a href="https://gina990313.github.io/homepage.html"  class="href" >Gina Website</a> </div>
     
     <ul class="drop-down-menu" >
-        <li class="logo"><a href="https://gina990313.github.io/homepage.html"><img src="網站logo.png"  height="25px" ></img></a></li>
-        <li class="menu" onclick="toggleMenu()"  id="menu"><span onmouseover="appear()" onmouseout="hide()">主選單</span>
+        <li class="logo"><a href="https://gina990313.github.io/homepage.html"><img src="C:\Users\Tsao ko hsuan\Desktop\AI\100ppi\網站logo.png"  height="25px" ></img></a></li>
+        <li class="menu" onclick="toggleMenu(1)"   id="menu"><span onmouseover="appear(1)" onmouseout="hide(1)">主選單</span>
             <ul class="menudisplay" id="menu-1" >
                 <li><a href="https://gina990313.github.io/homepage.html" class="href" >首頁</a></li>
                 <li><a href="https://gina990313.github.io/samplepage.html" class="href">大專生研究計畫網頁</a></li>
             </ul>
         </li>
-        <li class="user">關於我</li>
+        <li class="user" onclick="toggleMenu(2)"><span onmouseover="appear(2)" onmouseout="hide(2)">關於我</span>
+            <ul class="menudisplay" id="menu-2">
+                <li><a href = "https://www.facebook.com/tsaokohsuan" class="href">facebook</a></li>
+                <li><a href="https://www.linkedin.com/in/kohsaun-tsao-0071731ba/" class="href">LinkedIn</a></li>
+                <li><a href="https://www.instagram.com/gina890524/" class="href">Instagram</a></li>
+            </ul>
+        </li>
     </ul>
    
     <div style="text-align: center">
-        <img src = "IMG_8471.JPG" width="200px"></img>
+        <img src = "C:\Users\Tsao ko hsuan\Desktop\IMG_8471.JPG" width="200px"></img>
         
     </div>
     
