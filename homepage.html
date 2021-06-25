@@ -54,10 +54,12 @@
         alert("歡迎"+username+"來到米奇妙妙屋~")
         function toggleMenu(){
             var menu=document.getElementById("menu");
-            if (menu.style.display=="block"){
-                menu.classList.toggle("hide");//搭配css class選擇器就可以輕鬆藏起來，切換標籤物件class的hide設定
+            if(menu.style.display=="none"){//menu是藏起來的狀態就展開
+            menu.style.display="block";//展開
             }
-            else if(menu.style.display=="none") {menu.classList.toggle("appear")}
+            else{
+            menu.style.display="none";//menu式展開的話，點一下就藏起來
+            }
         }
     </script>
 </head>
